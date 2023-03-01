@@ -2,7 +2,13 @@
 
 ## About
 
-Zicket tackles a very interesting scalping problem that Vitalik Buterin, at ETH Mexico raised. The issue of people buying multiple conference tickets simultaneously. This indicates that this is an open problem and that there aren’t any solutions. Solving this issue will help prevent ticket misuse by destroying the incentive to resell tickets and making bots redundant.
+Zicket tackles a very interesting scalping problem that Vitalik Buterin, at ETH Mexico raised. The issue of people buying multiple conference tickets simultaneously. This indicates that this is an open problem and that there aren’t any solutions. Solving this issue will help prevent ticket misuse by destroying the incentive to resell tickets and making bots redundant. We wanted to one up that idea by:
+
+- Using zk proofs
+- Limiting ticket order to one per person
+- Making the tickets non-transferable
+
+Staying anonymous should be everyone’s right and pumping up ticket prices must be prevented.
 
 ## Problem Statement
 
@@ -20,15 +26,6 @@ Tickets are sent to the wallet and made non-transferable to prevent reselling.
 ## How we used Polygon
 
 We plan on using the Polygon Flutter SDK for creating an Identity Wallet that will be used to store the Proof of Humanity claim and the Proof that you haven't already purchased a ticket (not in the set of nullifiers)
-
-## Mission & Impact
-
-We were inspired by Vitalik’s talk at ETHMexico (Aug 2k22) that raised the issue of people buying multiple conference tickets simultaneously. 
-We wanted to one up that idea by
-Using zk proofs
-Limiting ticket order to one per person
-Making the tickets non-transferable
-Staying anonymous should be everyone’s right and pumping up ticket prices must be prevented.
 
 ## :tada: Demo :tada:
 
