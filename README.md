@@ -2,30 +2,19 @@
 
 ## About
 
-Zicket tackles a very interesting scalping problem that Vitalik Buterin, at ETH Mexico raised. The issue of people buying multiple conference tickets simultaneously. This indicates that this is an open problem and that there aren’t any solutions. Solving this issue will help prevent ticket misuse by destroying the incentive to resell tickets and making bots redundant. We wanted to one up that idea by:
-
-- Using zk proofs
-- Limiting ticket order to one per person
-- Making the tickets non-transferable
-
-Staying anonymous should be everyone’s right and pumping up ticket prices must be prevented.
+Zicket is a solution to the scalping problem raised by Vitalik Buterin at ETH Mexico. Currently, people can buy multiple conference tickets at once, which is a problem because it encourages ticket misuse and allows bots to resell tickets at inflated prices. Our solution uses zk proofs to allow buyers to remain anonymous, while also limiting ticket orders to one per person and making the tickets non-transferable. Our goal is to prevent ticket scalping and protect buyers' privacy.
 
 ## Problem Statement
 
-People want to buy event tickets without revealing their identity or private information, while event organizers want to ensure that the person using the ticket is the original buyer.
-
-Right now, there aren’t many solutions that can be integrated into any ticket-selling platforms, while preserving privacy. That’s why we decided to created Zicket.
+The problem we're addressing is the tension between buyers who want to remain anonymous when purchasing event tickets and organizers who need to ensure that the person using the ticket is the original buyer. Current solutions that can be integrated into ticket-selling platforms without compromising privacy are limited, which is why we created Zicket to tackle multiple issues at once.
 
 ## Solution
 
-Zicket is a plugin that can be integrated into every ticket-selling platform.
-It allows buyers to stay anonymous by generating zk proofs using PolygonID.
-Zicket prevents buying more than one ticket by checking if the public key is in the set of nullifiers. 
-Tickets are sent to the wallet and made non-transferable to prevent reselling.
+Zicket is a plugin that can be integrated into any ticket-selling platform. It enables buyers to remain anonymous by using zk proofs generated using PolygonID. To prevent the purchase of more than one ticket, Zicket checks if the public key is in the set of nullifiers. Tickets are then sent to the buyer's wallet and made non-transferable, preventing reselling and protecting buyers from inflated prices.
 
 ## How we used Polygon
 
-We plan on using the Polygon Flutter SDK for creating an Identity Wallet that will be used to store the Proof of Humanity claim and the Proof that you haven't already purchased a ticket (not in the set of nullifiers)
+We used the Polygon Flutter SDK to create an Identity Wallet that stores the Proof of Humanity claim and the Proof of ticket purchase, which is not in the set of nullifiers. By using Polygon, we ensure that Zicket is efficient, scalable and provides an easy and simple buyer flow from registration to the ticket claim.
 
 ## :tada: Demo :tada:
 
