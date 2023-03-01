@@ -1,23 +1,26 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
-  const unlockTime = currentTimestampInSeconds + ONE_YEAR_IN_SECS;
+  const verifierContract = "CredentialVerifier";
 
-  const lockedAmount = ethers.utils.parseEther("1");
+  const spongePoseidonLib = "0x12d8C87A61dAa6DD31d8196187cFa37d1C647153";
+  const poseidon6Lib = "0xb588b8f07012Dc958aa90EFc7d3CF943057F17d7";
 
-  const Lock = await ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
 
-  await lock.deployed();
+  const CredentialVerifier = await ethers.getContractFactory(verifierContract,{
+    libraries: {
+      SpongePoseidon: spongePoseidonLib,
+      PoseidonUnit6L: poseidon6Lib
+    },
+  } );
+  const credentialVerifier = await CredentialVerifier.deploy();
 
-  console.log(`Lock with 1 ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`);
+  await credentialVerifier.deployed();
+  console.log("Credential verifiable contract address:", credentialVerifier.address);
 }
-
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
