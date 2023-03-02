@@ -20,12 +20,6 @@ We used the Polygon Flutter SDK to create an Identity Wallet that stores the Pro
 
 ## Tech Architecture 
 
-:eyes: How to solve this?
-
-Polygon ID
-
-:tada: Demo
-
 ```mermaid
 graph TD;
     A-->B;
