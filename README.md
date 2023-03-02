@@ -2,7 +2,7 @@
 
 ## About
 
-Zicket is a solution to the scalping problem raised by Vitalik Buterin at ETH Mexico. Currently, people can buy multiple conference tickets at once, which is a problem because it encourages ticket misuse and allows bots to resell tickets at inflated prices. Our solution uses zk proofs to allow buyers to remain anonymous, while also limiting ticket orders to one per person and making the tickets non-transferable. Our goal is to prevent ticket scalping and protect buyers' privacy.
+Zicket is a solution to the scalping problem raised by Vitalik Buterin at ETH Mexico (https://www.youtube.com/watch?v=rp3cDq2LiBM). Currently, people can buy multiple conference tickets at once, which is a problem because it encourages ticket misuse and allows bots to resell tickets at inflated prices. Our solution uses zk proofs to allow buyers to remain anonymous, while also limiting ticket orders to one per person and making the tickets non-transferable. Our goal is to prevent ticket scalping and protect buyers' privacy.
 
 ## Problem Statement
 
