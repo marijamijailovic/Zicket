@@ -4,7 +4,7 @@
   "$metadata": {
     "uris": {
       "jsonLdContext": "https://raw.githubusercontent.com/marija-mijailovic/Zicket/develop/backend/schemas/proof-of-membership.jsonld",
-      "jsonSchema": "https://raw.githubusercontent.com/mrija-mijailovic/.json"
+      "jsonSchema": "https://raw.githubusercontent.com/marija-mijailovic/Zicket/develop/backend/schemas/proof-of-membership.json"
     }
   },
   "required": [
