@@ -12,11 +12,11 @@ const Operators = {
 
 async function main() {
 
-  // you can run https://go.dev/play/p/rnrRbxXTRY6 to get schema hash and claimPathKey using YOUR schema
-  const schemaBigInt = "74977327600848231385663280181476307657"
+  // you can run https://go.dev/play/p/rnrRbxXTRY6 to get schema hash and claimPathKey using ProogOfHumanity schema
+  const schemaBigInt = ""
 
-   // merklized path to field in the W3C credential according to JSONLD  schema e.g. birthday in the KYCAgeCredential under the url "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/kyc-v4.json-ld"
-  const schemaClaimPathKey = "20376033832371109177683048456014525905119173674985843915445634726167450989630"
+   // merklized path to field in the W3C credential according to JSONLD  schema e.g. isHuman in the ProogOfHumanity"
+  const schemaClaimPathKey = ""
 
   const requestId = 1;
 
@@ -24,7 +24,7 @@ async function main() {
     schema: schemaBigInt,
     claimPathKey  : schemaClaimPathKey,
     operator: Operators.EQ, // operator
-    value: [19950703, ...new Array(63).fill(0).map(i => 0)], // for operators 1-3 only first value matters
+    value: [1, ...new Array(63).fill(0).map(i => 0)], // for operators 1-3 only first value matters
   };
 
   // add the address of the contract just deployed

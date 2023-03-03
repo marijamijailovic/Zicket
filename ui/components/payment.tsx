@@ -1,12 +1,16 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
-//import paymentStyles from "../styles/paymentStyles.module.css";
-import { useContract, useContractWrite } from "wagmi";
+import paymentStyles from "../styles/paymentStyles.module.css";
+import { useAccount, useConnect, useContract, useContractWrite, useDisconnect } from "wagmi";
+import WalletConnected from "./walletConnected";
 
 export default function Payment() {
-  const [showWalletaddres, setShowWalletAddress] = useState(false);
   const [paymentType, setPaymentType] = useState("");
+  const [wallet, setWallet] = useState(false);
+  const { address: connectedAddress, isConnected } = useAccount();
+  const { connect, connectors, error, pendingConnector } = useConnect()
+  const { disconnect } = useDisconnect();
 
   const handleOptionChange = (e: any) => {
     const value = e.target.value;
@@ -14,13 +18,13 @@ export default function Payment() {
     console.log(value);
   };
 
-  // useEffect(() => {
-  //   if (paymentType === "crypto") {
-  //     setShowWalletAddress(true);
-  //   } else {
-  //     setShowWalletAddress(false);
-  //   }
-  // }, [paymentType]);
+  useEffect(() => {
+    if (paymentType === "crypto") { 
+        setWallet(true);
+    } else {
+      setWallet(false);
+    }
+  }, [paymentType]);
 
   return (
     <div className={styles.container}>
@@ -36,38 +40,44 @@ export default function Payment() {
             />
           </div>
           <div className={styles.mainContent}>
-            <div>
-              <p>Verification successful!</p>
-              <p >
+            <div className={paymentStyles.titleWrapper}>
+              <p className={paymentStyles.title}>Verification successful!</p>
+              <p className={paymentStyles.infoText}>
                 Now you can buy your ticket
               </p>
             </div>
-            <div>
-              <p>
+            <div className={paymentStyles.chooseOptionWrapper}>
+              <p className={paymentStyles.chooseOption}>
                 Choose payment option
               </p>
-              <div>
+              <div className={paymentStyles.inputWrapper}>
                 <div>
-                <label htmlFor="crypto">
-                  <input
-                    type="radio"
-                    id="crypto"
-                    name="payment"
-                    value="crypto"
-                    onChange={(e) => handleOptionChange(e)}
-                  />
-                 Crypto</label>
+                  <label className={paymentStyles.label} htmlFor="crypto">
+                    <input
+                      type="radio"
+                      id="crypto"
+                      name="payment"
+                      value="crypto"
+                      onChange={(e) => handleOptionChange(e)}
+                      className={paymentStyles.input}
+                    />
+                  Crypto
+                  </label>
+                  {wallet &&
+                    <WalletConnected />
+                  }  
                 </div>
                 <div>
-                <label htmlFor="fiat">
-                  <input
-                    type="radio"
-                    id="fiat"
-                    name="payment"
-                    value="fiat"
-                    onChange={(e) => handleOptionChange(e)}
-                  />
-                  Fiat
+                  <label className={paymentStyles.label} htmlFor="fiat">
+                    <input
+                      type="radio"
+                      id="fiat"
+                      name="payment"
+                      value="fiat"
+                      onChange={(e) => handleOptionChange(e)}
+                      className={paymentStyles.input}
+                    />
+                    Fiat
                   </label>
                 </div>
               </div>

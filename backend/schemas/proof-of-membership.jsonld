@@ -6,13 +6,13 @@
       "id": "@id",
       "type": "@type",
       "ProofOfMembership": {
-        "@id": "https://raw.githubusercontent.com/marija-mijailovic/rest-from-github/proof-of-membership.jsonld#ProofOfMembership",
+        "@id": "https://raw.githubusercontent.com/marija-mijailovic/Zicket/develop/backend/schemas/proof-of-membership.jsonld#ProofOfMembership",
         "@context": {
           "@version": 1.1,
           "@protected": true,
           "id": "@id",
           "type": "@type",
-          "vocab": "https://raw.githubusercontent.com/marija-mijailovic/the-md-files-of-input-data",
+          "vocab": "https://raw.githubusercontent.com/marija-mijailovic/Zicket/develop/backend/schemas/proof-of-membership.md",
           "xsd": "http://www.w3.org/2001/XMLSchema#",
           "did": {
             "@id": "vocab:did",

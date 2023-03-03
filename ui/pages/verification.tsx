@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
-import styles from '@/styles/Home.module.css'
+import styles from "@/styles/Home.module.css";
+import verificationStyles from "@/styles/verificationStyles.module.css";
 import QRCode from "react-qr-code";
 import Image from "next/image";
 import { useContractEvent } from "wagmi";
@@ -15,6 +16,8 @@ export default function Verification() {
   const [showPayment, setShowPayment] = useState(false);
   const [showError, setShowError] = useState(false);
 
+  const contractAddr = "0x8ef117ebc10B6649aB3f9F2Db8b1d9EFC8be5E5B";
+  
   useEffect(() => {
     if(isScaned) {
       if(verified) {
@@ -32,7 +35,7 @@ export default function Verification() {
 
   useContractEvent(
     {
-      address: "0x41AA5f08620f26fF6b83361aCf198b2C8c18b653",
+      address: contractAddr,
       abi: CredentialVerifierABI,
       eventName: 'Verified',
       listener(node, label, owner) {
@@ -48,7 +51,7 @@ export default function Verification() {
 
   useContractEvent(
     {
-      address: "0x41AA5f08620f26fF6b83361aCf198b2C8c18b653",
+      address: contractAddr,
       abi: CredentialVerifierABI,
       eventName: 'SubmitedRequest',
       listener(node, label, owner) {
@@ -63,7 +66,7 @@ export default function Verification() {
 
   useContractEvent(
     {
-      address: `0x${process.env.REACT_APP_CONTRACT_ADDRESS}`,
+      address: contractAddr,
       abi: CredentialVerifierABI,
       eventName: 'NotVerified',
       listener(node, label, owner) {
@@ -76,38 +79,39 @@ export default function Verification() {
     },
   );
 
-  if(showPayment) {
+  if(true) {
     return <Payment />
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <main className={styles.main}>
         {isScaned && <Loading />}
         <div>
-          <div>
+          <div className={styles.logoWarpper}>
             <Image
+              className={styles.logo}
               src="/logoWithoutBlueBackground.svg"
               alt="Zicket Logo"
               width={25}
               height={34}
             />
           </div>
-          <div>
-          <p>
-            Scan QR code with Zicket ID Wallet
-          </p>
-          <p>to prove you are eligable to purchase ticket</p>
+          <div className={verificationStyles.titleWrapper}>
+            <p className={verificationStyles.title}>
+              Scan QR code with Zicket ID Wallet
+            </p>
+            <p className={verificationStyles.infoText}>to prove you are eligable to purchase ticket</p>
           </div>
-          <div>
+          <div className={verificationStyles.qrCode}>
             <QRCode
               level="Q"
               style={{ width: 256 }}
               value={JSON.stringify(qrProofOfPurchasingTicket)}
             />
           </div>
-          <div>
-            <p>and generate proof</p>
+          <div className={verificationStyles.proof}>
+            <p className={verificationStyles.infoText}>and generate proof</p>
           </div>
           {showError && 
             <div>

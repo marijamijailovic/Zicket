@@ -9,7 +9,6 @@ import "../interfaces/ICircuitValidator.sol";
 import "../interfaces/IZKPVerifier.sol";
 
 contract ZKPVerifier is IZKPVerifier, Ownable {
-    // msg.sender-> ( requestID -> is proof given )
     mapping(address => mapping(uint64 => bool)) public proofs;
 
     mapping(uint64 => ICircuitValidator.CircuitQuery) public requestQueries;
@@ -34,16 +33,7 @@ contract ZKPVerifier is IZKPVerifier, Ownable {
 
         _beforeProofSubmit(requestId, inputs, requestValidators[requestId]);
 
-        require(
-            requestValidators[requestId].verify(
-                inputs,
-                a,
-                b,
-                c,
-                requestQueries[requestId].queryHash
-            ),
-            "proof response is not valid"
-        );
+        requestValidators[requestId].verify(inputs, a, b, c, requestQueries[requestId].queryHash);
 
         proofs[msg.sender][requestId] = true; // user provided a valid proof for request
 

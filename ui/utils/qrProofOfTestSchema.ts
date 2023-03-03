@@ -4,7 +4,7 @@ export const qrProofOfPurchasingTicket = {
   type: "https://iden3-communication.io/proofs/1.0/contract-invoke-request",
   body: {
     transaction_data: {
-      contract_address: "0x3565abAb4CEAD3418a67Bd150018E5eD6Ef1964C", //my contract address
+      contract_address: "0x8ef117ebc10B6649aB3f9F2Db8b1d9EFC8be5E5B", //my contract address
       method_id: "b68967e2",
       chain_id: 80001,
       network: "polygon-mumbai"

@@ -1,0 +1,36 @@
+.imageWrapper {
+    position: relative;
+    padding: 250px 300px;
+}
+
+.imageWrapper img {
+    position: absolute;
+    top: 20%;
+    right: 35%;
+}
+
+.secondImage {
+    animation-name: fade;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 1.5s;
+    animation-direction: alternate;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
