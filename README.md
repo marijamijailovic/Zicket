@@ -44,8 +44,13 @@ graph TD;
 ## What's next
 
 The next step is creating a perfect flow for Zicket. This would mean: 
-- Go from being a sample service to onboardinng real companies that provide Proof of Humanity Credentials
-- Users will use Zicket ID wallet and have claims as well as NFTs in the wallet
+
+- Go from being a sample service to onboarding real companies that provide Proof of Humanity Credentials.  
+
+- Integrate Zicket into ticketing platforms.
+
+- Users will use Zicket ID wallet and have claims as well as ticket NFTs in their wallets.
+
 
 
 
