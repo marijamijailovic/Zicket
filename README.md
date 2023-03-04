@@ -67,7 +67,7 @@ flowchart LR
 
 The next step is creating a perfect flow for Zicket. This would mean: 
 
-- Go from being a sample service to onboarding real companies that provide Proof of Humanity Credentials.  
+- Oboarding real companies that provide Proof of Humanity Credentials.  
 
 - Integrate Zicket into ticketing platforms.
 
