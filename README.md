@@ -18,6 +18,8 @@ A good example of reselling gone wrong is group of people managed to trick the s
 
 We used the Polygon Flutter SDK to create an Identity Wallet that stores the Proof of Humanity claim and the Proof of ticket purchase, which is not in the set of nullifiers. By using Polygon, we ensure that Zicket is efficient, scalable and provides an easy and simple buyer flow from registration to the ticket claim.
 
+Here is the link to the extended PolygonID wallet also known as ZicketId Wallet https://github.com/marija-mijailovic/zicket-polygonid-flutter-sdk.git
+
 ## :tada: Demo Video :tada:
 
 ## Tech Architecture 
