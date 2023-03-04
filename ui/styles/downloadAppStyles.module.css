@@ -1,0 +1,6 @@
+@import "./Home.module.css";
+
+.buttonWarpper {
+    display: flex;
+    gap: 37px;
+}

@@ -1,0 +1,21 @@
+.titleWrapper {
+    width: 100%;
+    padding: 0 70px;
+}
+
+.title {
+    font-size: 48px;
+    line-height: 57px;
+    margin: 0;
+}
+
+.infoText {
+    font-size: 24px;
+    line-height: 28px;
+}
+.qrCode {
+    padding: 30px 0;
+}
+.proof {
+    padding: 20px 0 40px;
+}
