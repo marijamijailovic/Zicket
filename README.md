@@ -12,7 +12,9 @@ The problem we're addressing is the tension between buyers who want to remain an
 
 Zicket is a plugin that can be integrated into any ticket-selling platform. It enables buyers to remain anonymous by using zk proofs generated using PolygonID. To prevent the purchase of more than one ticket, Zicket checks if the public key is in the set of nullifiers. Tickets are then sent to the buyer's wallet and made non-transferable, preventing reselling and protecting buyers from inflated prices.
 
-A good example of reselling gone wrong is group of people managed to trick the system for EthCC, purchasing 200 tickets with a plan to resell them. But when the conference organisers stripped the NFTs of their metadata, the resellers realised that the plan had fallen apart. They spent about $68k for 200 tickets that were useless (https://rekt.news/ethcc-detychey-vs-touts/). This would, of course, be imposible with Zicket. **Dopuniti**
+A good example of reselling gone wrong is group of people managed to trick the system for EthCC, purchasing 200 tickets with a plan to resell them. But when the conference organisers stripped the NFTs of their metadata, the resellers realised that the plan had fallen apart. They spent about $68k for 200 tickets that were useless (https://rekt.news/ethcc-detychey-vs-touts/).
+
+This would be impossible with Zicket because we use two Merkle trees. The first Merkle tree stores hashes of private keys, preventing users from guessing DIDs and attempting to purchase tickets fraudulently. DIDs are created using the BBJ curve from the public and private keys. The second Merkle tree is used to input the hash of the private key after the ticket has been successfully purchased. It also verifies whether the buyer already has a ticket, and if they do, they cannot purchase another one.
 
 ## How we used Polygon
 
