@@ -20,17 +20,29 @@ We used the Polygon Flutter SDK to create an Identity Wallet that stores the Pro
 
 Link to the extended Polygon ID Wallet also known as Zicket ID Wallet: https://github.com/marija-mijailovic/zicket-polygonid-flutter-sdk.git
 
-## :tada: Demo Video :tada:
-
 ## Tech Architecture 
 
 ```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
+flowchart LR
+    A[ZicketId Wallet] -->|DID| B(Claim of Proof of Humanity)
+    B --> C{Scan QR code on Verifier server - Zicket}
+    C -->|Valid| D[Verifer catches callback result from Zicket ID Wallet]
+    C -->|NotValid| E[Be sure you have correct claim]
 ```
+
+```mermaid
+flowchart LR
+    A[Zicket Plugin] --> B(Show QR Codefor verification)
+    B --> C{Listen for callbacks from ZicketID Wallet}
+    C -->|Valid| D(Choose payment type)
+    D --> F{Crypto or Fiat}
+    F --> |Crypto| G(Choose the address to send ticket)
+    F --> |Fiat| G(Choose the address to send ticket)
+    G --> H[Ticket is on way to your wallet]
+    C -->|NotValid| E[Be sure you have correct claim, or you not purchase ticket already]
+```
+
+## :tada: Demo Video :tada:
 
 ## Tech Stack
 
@@ -42,6 +54,14 @@ graph TD;
 - node.js
 
 ## How to run 
+
+- Navigate to ui/ 
+- Set up .env.local, you can look for example in .env.example
+- Run:
+```bash
+    yarn
+    yarn run dev
+```
 
 ## What's next
 
