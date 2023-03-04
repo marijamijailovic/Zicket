@@ -44,8 +44,8 @@ graph TD;
 ## What's next
 
 The next step is creating a perfect flow for Zicket. This would mean: 
-- Zicket ID wallet will be built on top of Polygon Flutter SDK
-- Users will use Zicket ID wallet and have all claims in one place
-- The flow will only require scanning one QR code and payment
+- Go from being a sample service to onboardinng real companies that provide Proof of Humanity Credentials
+- Users will use Zicket ID wallet and have claims as well as NFTs in the wallet
+
 
 
