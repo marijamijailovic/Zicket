@@ -44,6 +44,11 @@ flowchart LR
 
 ## :tada: Demo Video :tada:
 
+Pre-requisites:
+- Event organizers must create an event
+- Buyers must have Proof of Humanity Claims
+- Buyers must have enough crypto on their wallets to purchase the ticket
+
 ## Tech Stack
 
 - PolygonID
