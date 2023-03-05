@@ -44,6 +44,8 @@ flowchart LR
 
 ## :tada: Demo Video :tada:
 
+![alt text](https://drive.google.com/uc?export=view&id=1eoI3J1r-a2NHxtyGJqxEz6MmllFDE1xY/view)
+
 Pre-requisites:
 - Event organizers must create an event
 - Buyers must have Proof of Humanity Claims
