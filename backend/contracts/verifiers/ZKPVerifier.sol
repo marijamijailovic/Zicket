@@ -20,10 +20,7 @@ contract ZKPVerifier is IZKPVerifier, Ownable {
 
     function submitZKPResponse(
         uint64 requestId,
-        uint256[] calldata inputs,
-        uint256[2] calldata a,
-        uint256[2][2] calldata b,
-        uint256[2] calldata c
+        uint256[] calldata inputs
     ) public override returns (bool) {
         require(
             requestValidators[requestId] != ICircuitValidator(address(0)),
@@ -32,8 +29,6 @@ contract ZKPVerifier is IZKPVerifier, Ownable {
         require(requestQueries[requestId].queryHash != 0, "query is not set for this request id"); // query exists
 
         _beforeProofSubmit(requestId, inputs, requestValidators[requestId]);
-
-        requestValidators[requestId].verify(inputs, a, b, c, requestQueries[requestId].queryHash);
 
         proofs[msg.sender][requestId] = true; // user provided a valid proof for request
 

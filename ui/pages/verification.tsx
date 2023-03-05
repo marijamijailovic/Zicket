@@ -1,14 +1,13 @@
 
 import { useEffect, useState } from "react";
-import styles from "@/styles/Home.module.css";
-import verificationStyles from "@/styles/verificationStyles.module.css";
 import QRCode from "react-qr-code";
 import Image from "next/image";
 import { useContractEvent } from "wagmi";
-import CredentialVerifierABI from "../abi/credentialVerifier.abi.json";
 import { qrProofOfPurchasingTicket } from "../utils/qrProofOfPurchasingTicket";
 import Payment from "../components/payment";
-import Loading from "@/components/loading";
+import styles from "@/styles/Home.module.css";
+import verificationStyles from "@/styles/verificationStyles.module.css";
+import ZicketABI from "../abi/zicket.abi.json";
 
 export default function Verification() {
   const [verified, setVerified] = useState(false);
@@ -16,7 +15,7 @@ export default function Verification() {
   const [showPayment, setShowPayment] = useState(false);
   const [showError, setShowError] = useState(false);
 
-  const contractAddr = "0x8ef117ebc10B6649aB3f9F2Db8b1d9EFC8be5E5B";
+  const contractAddr = "0x13E3a97607c820d44f51931C0550D9a432Ca22ED";
   
   useEffect(() => {
     if(isScaned) {
@@ -36,26 +35,10 @@ export default function Verification() {
   useContractEvent(
     {
       address: contractAddr,
-      abi: CredentialVerifierABI,
+      abi: ZicketABI,
       eventName: 'Verified',
       listener(node, label, owner) {
-        console.log("AAAAAA Verified");
-        console.log(node, label, owner);
-        setVerified(true);
-        setIsScaned(true);
-        //label not empty check, and then we can go to payment and label.transactionHash =0x213dd85f1d78ccda4431e508221087e1fa3012f880c6c8f07b9f4f2d2d3df940
-      },
-      chainId: 80001,
-    },
-  );
-
-  useContractEvent(
-    {
-      address: contractAddr,
-      abi: CredentialVerifierABI,
-      eventName: 'SubmitedRequest',
-      listener(node, label, owner) {
-        console.log("AAAAAA SubmitedRequest");
+        console.log("Verified event emitted");
         console.log(node, label, owner);
         setVerified(true);
         setIsScaned(true);
@@ -63,30 +46,14 @@ export default function Verification() {
       chainId: 80001,
     },
   );
-
-  useContractEvent(
-    {
-      address: contractAddr,
-      abi: CredentialVerifierABI,
-      eventName: 'NotVerified',
-      listener(node, label, owner) {
-        console.log("AAAAAA Not Verified");
-        console.log(node, label, owner);
-        setVerified(false);
-        setIsScaned(true);
-      },
-      chainId: 80001,
-    },
-  );
-
-  if(true) {
+  
+  if(showPayment) {
     return <Payment />
   }
 
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        {isScaned && <Loading />}
         <div>
           <div className={styles.logoWarpper}>
             <Image

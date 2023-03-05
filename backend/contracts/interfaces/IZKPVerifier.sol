@@ -7,10 +7,7 @@ import "./ICircuitValidator.sol";
 interface IZKPVerifier {
     function submitZKPResponse(
         uint64 requestId,
-        uint256[] memory inputs,
-        uint256[2] memory a,
-        uint256[2][2] memory b,
-        uint256[2] memory c
+        uint256[] memory inputs
     ) external returns (bool);
 
     function setZKPRequest(

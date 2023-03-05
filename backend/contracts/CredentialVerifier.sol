@@ -5,7 +5,7 @@ import "./lib/GenesisUtils.sol";
 import "./interfaces/ICircuitValidator.sol";
 import "./verifiers/ZKPVerifier.sol";
 
-contract CredentialVerifer is ZKPVerifier {
+contract CredentialVerifier is ZKPVerifier {
   uint64 public constant TRANSFER_REQUEST_ID = 1;
 
   mapping(uint256 => address) public idToAddress;
@@ -13,6 +13,7 @@ contract CredentialVerifer is ZKPVerifier {
   mapping(string => string) public didToHashedPrivateKey;
 
   event AfterProofSubmited(address indexed user);
+  event AlreadyPurchaseTicket(string indexed did);
 
   constructor() {}
 
@@ -25,10 +26,10 @@ contract CredentialVerifer is ZKPVerifier {
         address addr = GenesisUtils.int256ToAddress(
             inputs[validator.getChallengeInputIndex()]
         );
-        // this is linking between msg.sender and
+        // this is linking between msg.sender
         require(
-            msg.sender == addr,
-            "address in proof is not a sender address"
+            msg.sender != addr,
+            "Address in proof is not a sender address"
         );
     }
 
@@ -43,11 +44,11 @@ contract CredentialVerifer is ZKPVerifier {
         );
 
         // user address didn't verifed
-        uint256 id = inputs[validator.getChallengeInputIndex()];
+        uint256 _id = inputs[validator.getChallengeInputIndex()];
         // additional check didn't get purchase before
-        if (idToAddress[id] == address(0)) {
-            addressToId[msg.sender] = id;
-            idToAddress[id] = msg.sender;
+        if (idToAddress[0] == address(0)) {
+            addressToId[msg.sender] = 0;
+            idToAddress[0] = msg.sender;
         }
         emit AfterProofSubmited(msg.sender);
     }
@@ -56,16 +57,10 @@ contract CredentialVerifer is ZKPVerifier {
         string memory did, 
         string memory hashedPrivateKey,
         uint64 requestId,
-        uint256[] calldata inputs,
-        uint256[2] calldata a,
-        uint256[2][2] calldata b,
-        uint256[2] calldata c
+        uint256[] calldata inputs
         ) external {
-            require(
-                keccak256(abi.encodePacked(didToHashedPrivateKey[did])) == keccak256(abi.encodePacked("")),
-                "This did already purchase for ticket"
-            );
+            require(keccak256(abi.encodePacked(didToHashedPrivateKey[did])) == keccak256(abi.encodePacked("")), "Invalid did for purchase ticket. The did already buy ticket.");
             didToHashedPrivateKey[did] = hashedPrivateKey;
-            ZKPVerifier.submitZKPResponse(requestId, inputs, a, b, c);
+            ZKPVerifier.submitZKPResponse(requestId, inputs);
         }
 }

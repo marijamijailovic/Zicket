@@ -2,21 +2,26 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import paymentStyles from "../styles/paymentStyles.module.css";
-import { useAccount, useConnect, useContract, useContractWrite, useDisconnect } from "wagmi";
 import WalletConnected from "./walletConnected";
+import TicketDestination from "./ticketDestination";
 
 export default function Payment() {
   const [paymentType, setPaymentType] = useState("");
   const [wallet, setWallet] = useState(false);
-  const { address: connectedAddress, isConnected } = useAccount();
-  const { connect, connectors, error, pendingConnector } = useConnect()
-  const { disconnect } = useDisconnect();
+  const [proceed, setProceed] = useState(false);
+  const [disabled, setDisabled] = useState(true);
 
   const handleOptionChange = (e: any) => {
     const value = e.target.value;
     setPaymentType(value);
+    setDisabled(false);
     console.log(value);
   };
+  
+  const handleOnClickPay = (e: any) => {
+    setProceed(true);
+    setDisabled(false);
+  }
 
   useEffect(() => {
     if (paymentType === "crypto") { 
@@ -25,6 +30,10 @@ export default function Payment() {
       setWallet(false);
     }
   }, [paymentType]);
+
+  if(proceed) {
+    return <TicketDestination />
+  }
 
   return (
     <div className={styles.container}>
@@ -79,6 +88,17 @@ export default function Payment() {
                     />
                     Fiat
                   </label>
+                </div>
+                <div className={paymentStyles.buttonWrapper}>
+                  <div>
+                    <button
+                      disabled={disabled}
+                      className={styles.button}
+                      onClick={(e) => handleOnClickPay(e)}
+                    >
+                      {"Confirm transaction of 0.01 Matic >"}
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

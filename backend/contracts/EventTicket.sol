@@ -12,7 +12,7 @@ contract EventTicket is IEventTicket, ERC721URIStorage, Ownable {
   
   constructor() ERC721("Zicket event ticket", "ZKT") {}
 
-  function awardTicket(string memory tokenURI, address ticketDestinationAddress) public onlyOwner override returns(uint256 ticketId) {
+  function awardTicket(string memory tokenURI, address ticketDestinationAddress) public override returns(uint256 ticketId) {
     ticketIds.increment();
     uint256 newTicketId = ticketIds.current();
     _safeMint(ticketDestinationAddress, newTicketId);

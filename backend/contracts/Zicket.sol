@@ -5,12 +5,12 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "./interfaces/IZicket.sol";
-import "./CredentialVerifer.sol";
+import "./CredentialVerifier.sol";
 import "./EventTicket.sol";
 
 contract Zicket is IZicket, Ownable, ReentrancyGuard {
     using Counters for Counters.Counter;
-    CredentialVerifer public credentialVerifier;
+    CredentialVerifier public credentialVerifier;
     EventTicket public eventTicket;
     Counters.Counter public totalEvents;
     mapping(uint256 => Event) public events;
@@ -45,11 +45,11 @@ contract Zicket is IZicket, Ownable, ReentrancyGuard {
     */
     error NotValidAddress();
 
-    constructor(CredentialVerifer _credentialVerifier, EventTicket _eventTicket) {
+    constructor(CredentialVerifier _credentialVerifier, EventTicket _eventTicket) {
         credentialVerifier = _credentialVerifier;
         eventTicket = _eventTicket;
     }
-
+    
     function addNewEvent(address payable eventOwner, uint256 ticketPrie, uint256 totalAmountReceived, uint256 eventStart, uint256 eventEnd, string memory name, string memory descripton, string memory ticketTokenURI) public override onlyOwner {
         if(eventStart <= block.timestamp) {
             revert IvalidEventDate();
@@ -71,25 +71,21 @@ contract Zicket is IZicket, Ownable, ReentrancyGuard {
         emit EventCreation(msg.sender, currentEventId, newEvent);
     }
 
-    function userVerification(uint256 eventId, UserData memory userData, uint64 requestId, uint256[] calldata inputs, uint256[2] calldata a, uint256[2][2] calldata b, uint256[2] calldata c) public override {
+    function userVerification(uint256 eventId, UserData memory userData, uint64 requestId, uint256[] calldata inputs) public override {
         if(eventId > totalEvents.current()) {
             revert NotFoundEvent();
         }
         if(isEventTicketingClosed(eventId)) {
             revert NotActiveEvent();
         }
-        credentialVerifier.submitProofRequest(userData.did, userData.hashedPrivKey, requestId, inputs, a, b, c);
+        credentialVerifier.submitProofRequest(userData.did, userData.hashedPrivKey, requestId, inputs);
 
         emit Verified(msg.sender, userData.did);
     }
 
     function purchaseTicket(uint256 eventId, address ticketDestinationAddress) public override payable nonReentrant{
-        if(eventId > totalEvents.current()) {
-            revert NotFoundEvent();
-        }
-        if(isEventTicketingClosed(eventId)) {
-            revert NotActiveEvent();
-        }
+        require(eventId <= totalEvents.current(), "The event does not exist.");
+        require(!isEventTicketingClosed(eventId), "The event does not open for entering anymore.");
         if(ticketDestinationAddress == address(0)) {
             revert NotValidAddress();
         }
@@ -99,7 +95,6 @@ contract Zicket is IZicket, Ownable, ReentrancyGuard {
         }
         currentEvent.totalAmountReceived += msg.value;
         //TODO add user to the merkle tree of success payed ticket
-        //TODO //Ako je payment uspesan, dodaj hes private key-a u stablo paymenta
         sendTicket(currentEvent.ticketTokenURI, ticketDestinationAddress);
     }
 
@@ -114,7 +109,7 @@ contract Zicket is IZicket, Ownable, ReentrancyGuard {
     }
 
     /**
-    * @dev Send the gratitude NFT to user.
+    * @dev Send the ticket SBT to user.
     * @param ticketTokenURI The event ticket uri of SBT.
     * @param ticketDestinationAddress The address where to send ticket.
     */

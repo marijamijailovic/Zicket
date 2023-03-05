@@ -6,7 +6,7 @@ export const qrProofOfPurchasingTicket = {
   "body": {
       "reason": "purchase event ticket",
       "transaction_data": {
-          "contract_address": "0x8ef117ebc10B6649aB3f9F2Db8b1d9EFC8be5E5B",
+          "contract_address": "0x3bc536fFeffc62DE1F52351B9bD7543Ad44D4a5E",
           "method_id": "b68967e2",
           "chain_id": 80001,
           "network": "polygon-mumbai"

@@ -39,8 +39,10 @@ interface IZicket {
 		* @notice Verify that user is eligable for the given event id.
 		* @param eventId The id of the event for ticket purchase.
     * @param userData The user did and hashed private key.
+		* @param requestId The reuquest id of the verification
+		* @param inputs The inputs data of the verification
 		*/
-		function userVerification(uint256 eventId, UserData memory userData, uint64 requestId, uint256[] calldata inputs, uint256[2] calldata a, uint256[2][2] calldata b, uint256[2] calldata c) external;
+		function userVerification(uint256 eventId, UserData memory userData, uint64 requestId, uint256[] calldata inputs) external;
 
 		/**
 		* @notice Place payment in matic for the given event id.
