@@ -12,36 +12,36 @@ contract Zicket is IZicket, Ownable, ReentrancyGuard {
     using Counters for Counters.Counter;
     CredentialVerifier public credentialVerifier;
     EventTicket public eventTicket;
-    Counters.Counter public totalEvents;
     mapping(uint256 => Event) public events;
+    Counters.Counter public totalEvents;
     
     /** 
-    * @notice Invalid event date. The event start or end date must be in feature.
+    * @notice The event start or end date must be in feature.
     */
     error IvalidEventDate();
 
     /** 
-    * @notice Invalid ticket price. The event ticket price can't be zero or less.
+    * @notice The event ticket price can't be zero or less.
     */
     error InvalidTicketPrice();
 
     /**
-    * @notice Event is not found. The desired event does not exist.
+    * @notice The desired event does not exist.
     */
     error NotFoundEvent();
 
     /**
-    * @notice Event is not active. The desired event does not open for entering anymore.
+    * @notice The desired event does not open for entering anymore.
     */
     error NotActiveEvent();
 
     /**
-    * @notice The amount is invalid. The user send invalid amount.
+    * @notice The user send invalid amount.
     */
     error InvalidAmount();
 
     /**
-    * @notice The address is invalid. The user address is invalid.
+    * @notice The user address is invalid.
     */
     error NotValidAddress();
 
@@ -85,7 +85,7 @@ contract Zicket is IZicket, Ownable, ReentrancyGuard {
 
     function purchaseTicket(uint256 eventId, address ticketDestinationAddress) public override payable nonReentrant{
         require(eventId <= totalEvents.current(), "The event does not exist.");
-        require(!isEventTicketingClosed(eventId), "The event does not open for entering anymore.");
+        require(!isEventTicketingClosed(eventId), "The event is not open for entering anymore.");
         if(ticketDestinationAddress == address(0)) {
             revert NotValidAddress();
         }
@@ -94,7 +94,6 @@ contract Zicket is IZicket, Ownable, ReentrancyGuard {
             revert InvalidAmount();
         }
         currentEvent.totalAmountReceived += msg.value;
-        //TODO add user to the merkle tree of success payed ticket
         sendTicket(currentEvent.ticketTokenURI, ticketDestinationAddress);
     }
 

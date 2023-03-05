@@ -59,7 +59,7 @@ contract CredentialVerifier is ZKPVerifier {
         uint64 requestId,
         uint256[] calldata inputs
         ) external {
-            require(keccak256(abi.encodePacked(didToHashedPrivateKey[did])) == keccak256(abi.encodePacked("")), "Invalid did for purchase ticket. The did already buy ticket.");
+            require(keccak256(abi.encodePacked(didToHashedPrivateKey[did])) == keccak256(abi.encodePacked("")), "The did already buy ticket.");
             didToHashedPrivateKey[did] = hashedPrivateKey;
             ZKPVerifier.submitZKPResponse(requestId, inputs);
         }
