@@ -15,6 +15,12 @@
     line-height: 28px;
 }
 
+.infoTxText {
+    font-size: 15px;
+    line-height: 13px;  
+    color:#3450E4
+}
+
 .chooseOptionWrapper {
     width: 100%;
     display: flex;
@@ -62,7 +68,14 @@
 .addres {
     font-size: 24px;
     line-height: 28px;
-    color: #524FE0;
+    color: #3450E4;
+    margin: 10px;
+}
+
+.errorText {
+    font-size: 24px;
+    line-height: 28px;
+    color: #e91543;
     margin: 10px;
 }
 
@@ -76,8 +89,13 @@
     justify-content: flex-end;
 }
 .wayToWrapper {
-    padding: 110px;
+    padding: 100;
 }
+
+.wayToWrapperTicket {
+    padding: 100;
+}
+
 .titleTicket {
     font-size: 48px;
     line-height: 57px;

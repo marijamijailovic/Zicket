@@ -27,8 +27,8 @@ async function main() {
     value: [1, ...new Array(63).fill(0).map(i => 0)], // for operators 1-3 only first value matters
   };
 
-  // add the address of the contract just deployed
-  const CredentialVerifierAddress = "0x8ef117ebc10B6649aB3f9F2Db8b1d9EFC8be5E5B";
+  // add the address of the credential verifier contract just deployed
+  const CredentialVerifierAddress = "0x741f7648954bfa141450Bd69B86b6cE15E780077";
 
   let credentialVerifier = await ethers.getContractAt("CredentialVerifier", CredentialVerifierAddress);
 

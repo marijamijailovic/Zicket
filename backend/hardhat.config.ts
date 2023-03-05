@@ -9,7 +9,8 @@ const config: HardhatUserConfig = {
     mumbai: {
       url: `${process.env.ALCHEMY_MUMBAI_URL}`,
       accounts: [`0x${process.env.MUMBAI_PRIVATE_KEY}`],
-    }
+      allowUnlimitedContractSize: true,
+    },
   }
 };
 

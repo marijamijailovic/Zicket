@@ -9,16 +9,6 @@ export default function WalletConnected() {
   const { address: connectedAddress, isConnected } = useAccount();
   const { connect, connectors, error, pendingConnector } = useConnect()
   const { disconnect } = useDisconnect();
-  const [ticketDestinationAddress, setTicketDestinationAddress] = useState(false);
-  
-  const handleOnClickPaymentAddress = () => {
-    console.log("Next");
-    setTicketDestinationAddress(true);
-  }
-
-  if(ticketDestinationAddress) {
-    return <TicketDestination />
-  }
 
   return (
     !isConnected ?
@@ -39,10 +29,8 @@ export default function WalletConnected() {
       </div> 
     :
       <div className={paymentStyles.inputWrapper}>
-          <button
-            className={styles.linkButton}
-            onClick={() => handleOnClickPaymentAddress()}
-          >
+        <button
+            className={styles.linkButton}>
             <p className={paymentStyles.addres}>{connectedAddress}</p>
         </button>
       </div>       
