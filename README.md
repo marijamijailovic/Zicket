@@ -76,7 +76,7 @@ Click the image bellow to see the Demo Video:
 
 The next step is creating a perfect flow for Zicket. This would mean: 
 
-- Oboarding real companies that provide Proof of Humanity Credentials.  
+- Onboarding real companies that provide Proof of Humanity Credentials.  
 
 - Integrate Zicket into ticketing platforms.
 
