@@ -49,7 +49,7 @@ Pre-requisites:
 - Buyers must have Proof of Humanity Claims
 - Buyers must have enough crypto on their wallets to purchase the ticket
 
-Click for the image bellow for demo video:
+Click the image bellow to see the Demo Video:
 
 <a href="https://drive.google.com/uc?export=view&id=12kLtH3t56qFu3jIyF0PlwRYto6ldDIh0"><img src="https://drive.google.com/uc?export=view&id=1eoI3J1r-a2NHxtyGJqxEz6MmllFDE1xY" style="width: 500px; max-width: 100%; height: auto" title="Zicket" target="_blank"/></a>
 
