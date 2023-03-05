@@ -44,9 +44,7 @@ flowchart LR
 
 ## :tada: Demo Video :tada:
 
-[![Zicket Demo]
-(https://drive.google.com/uc?export=view&id=1eoI3J1r-a2NHxtyGJqxEz6MmllFDE1xY]
-(https://drive.google.com/file/d/12kLtH3t56qFu3jIyF0PlwRYto6ldDIh0/view?usp=sharing "ZicketDemo")    
+<a href="https://drive.google.com/uc?export=view&id=12kLtH3t56qFu3jIyF0PlwRYto6ldDIh0"><img src="https://drive.google.com/uc?export=view&id=1eoI3J1r-a2NHxtyGJqxEz6MmllFDE1xY" style="width: 500px; max-width: 100%; height: auto" title="Zicket"/></a>
 
 Pre-requisites:
 - Event organizers must create an event
