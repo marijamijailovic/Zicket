@@ -47,7 +47,7 @@ export default function Verification() {
     },
   );
   
-  if(showPayment) {
+  if(true) {
     return <Payment />
   }
 
