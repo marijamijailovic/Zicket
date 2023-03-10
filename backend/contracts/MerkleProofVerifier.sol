@@ -10,10 +10,9 @@ contract MerkleProofVerifier {
 
   function verify(
       bytes32[] memory proof,
-      string memory did,
       string memory hashPrivKey
   ) public returns (bool response){
-      bytes32 leaf = keccak256(bytes.concat(keccak256(abi.encode(did, hashPrivKey))));
+      bytes32 leaf = keccak256(abi.encode(hashPrivKey));
       response = MerkleProof.verify(proof, root, leaf);
   }
 

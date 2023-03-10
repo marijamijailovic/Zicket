@@ -20,7 +20,9 @@ contract ZKPVerifier is IZKPVerifier, Ownable {
 
     function submitZKPResponse(
         uint64 requestId,
-        uint256[] calldata inputs
+        uint256[] calldata inputs,
+        string memory did, 
+        string memory hashedPrivateKey
     ) public override returns (bool) {
         require(
             requestValidators[requestId] != ICircuitValidator(address(0)),
@@ -32,7 +34,8 @@ contract ZKPVerifier is IZKPVerifier, Ownable {
 
         proofs[msg.sender][requestId] = true; // user provided a valid proof for request
 
-        _afterProofSubmit(requestId, inputs, requestValidators[requestId]);
+        _afterProofSubmit(requestId, inputs, did, hashedPrivateKey, requestValidators[requestId]);
+
         return true;
     }
 
@@ -109,6 +112,8 @@ contract ZKPVerifier is IZKPVerifier, Ownable {
     function _afterProofSubmit(
         uint64 requestId,
         uint256[] memory inputs,
+        string memory did, 
+        string memory hashedPrivateKey,
         ICircuitValidator validator
     ) internal virtual {}
 }

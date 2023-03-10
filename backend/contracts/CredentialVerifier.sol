@@ -36,6 +36,8 @@ contract CredentialVerifier is ZKPVerifier {
     function _afterProofSubmit(
         uint64 requestId,
         uint256[] memory inputs,
+        string memory did, 
+        string memory hashedPrivateKey,
         ICircuitValidator validator
     ) internal override {
         require(
@@ -45,11 +47,12 @@ contract CredentialVerifier is ZKPVerifier {
 
         // user address didn't verifed
         uint256 _id = inputs[validator.getChallengeInputIndex()];
+        didToHashedPrivateKey[did] = hashedPrivateKey;
         // additional check didn't get purchase before
-        if (idToAddress[0] == address(0)) {
-            addressToId[msg.sender] = 0;
-            idToAddress[0] = msg.sender;
-        }
+        // if (idToAddress[_id] == address(0)) {
+        //     addressToId[msg.sender] = _id;
+        //     idToAddress[_id] = msg.sender;
+        // }
         emit AfterProofSubmited(msg.sender);
     }
 
@@ -59,8 +62,8 @@ contract CredentialVerifier is ZKPVerifier {
         uint64 requestId,
         uint256[] calldata inputs
         ) external {
-            require(keccak256(abi.encodePacked(didToHashedPrivateKey[did])) == keccak256(abi.encodePacked("")), "The did already buy ticket.");
+            require(keccak256(abi.encodePacked(didToHashedPrivateKey[did])) != keccak256(abi.encodePacked("")), "The did already buy ticket.");
             didToHashedPrivateKey[did] = hashedPrivateKey;
-            ZKPVerifier.submitZKPResponse(requestId, inputs);
+            ZKPVerifier.submitZKPResponse(requestId, inputs, did, hashedPrivateKey);
         }
 }
