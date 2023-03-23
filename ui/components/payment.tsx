@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Zicket.module.css";
 import paymentStyles from "../styles/paymentStyles.module.css";
 import WalletConnected from "./walletConnected";
 import TicketDestination from "./ticketDestination";

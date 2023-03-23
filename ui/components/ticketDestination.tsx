@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 import { useAccount, useContractWrite, usePrepareContractWrite } from "wagmi";
 import { useConnect, useDisconnect } from "wagmi";
 import Loading from "./loading";
-import styles from "@/styles/Home.module.css";
+import styles from "@/styles/Zicket.module.css";
 import paymentStyles from "@/styles/paymentStyles.module.css";
 import ZicketABI from "../abi/zicket.abi.json";
 

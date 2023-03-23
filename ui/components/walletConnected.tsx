@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { use, useState } from "react";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Zicket.module.css";
 import paymentStyles from "../styles/paymentStyles.module.css";
 import TicketDestination from "./ticketDestination";
 
