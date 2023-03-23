@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useContractEvent } from "wagmi";
 import { qrProofOfPurchasingTicket } from "../utils/qrProofOfPurchasingTicket";
 import Payment from "../components/payment";
-import styles from "@/styles/Home.module.css";
+import styles from "@/styles/Zicket.module.css";
 import verificationStyles from "@/styles/verificationStyles.module.css";
 import ZicketABI from "../abi/zicket.abi.json";
 

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Zicket.module.css";
 
 export default function Loader() {
   return (
