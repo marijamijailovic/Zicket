@@ -22,12 +22,12 @@ contract EventTicket is IEventTicket, ERC721URIStorage, Ownable {
   }
 
     function burn(uint256 tokenId) public {
-        require(ownerOf(tokenId) == msg.sender, "Only the owner of the token can burn it.");
+        require(ownerOf(tokenId) == msg.sender, "Only owner of token can burn it.");
         _burn(tokenId);
     }
 
     function _beforeTokenTransfer(address from, address to, uint256, uint256) pure override internal {
-        require(from == address(0) || to == address(0), "This a Soulbound token. It cannot be transferred. It can only be burned by the token owner.");
+        require(from == address(0) || to == address(0), "This is not transferable token");
     }
 
   function _burn(uint256 ticketId) internal override {

@@ -12,6 +12,8 @@
   box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   border-radius: 70px;
+  max-width: 744px;
+  max-height: 728px;
 }
 
 .mainContent {
@@ -127,6 +129,13 @@
   margin: 0;
 }
 
+.noteText {
+  font-size: 18px;
+  line-height: 30px;
+  margin: 0;
+  color:red
+}
+
 .button, .buttonDownload {
   font-family: 'Rubik';
   font-weight: 400;
@@ -239,4 +248,13 @@
   -o-transition: 300ms;
   transition: 300ms;
   z-index: 1
+}
+
+.formGroup>.input:focus {
+  border: 1px solid #C2C2C2;
+}
+
+.input:focus+.label,
+.input:focus-visible+.label {
+  opacity: 1;
 }
