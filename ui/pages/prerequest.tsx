@@ -19,11 +19,10 @@ export default function Prerequest() {
           />
           <div className={styles.contentInfo}>
             <p className={styles.infoText}>
-              In order to insure that you have all to start with the process of buying ticket, <br /> 
-              first scan the bellow QR code with your Android phone to download the Zicket ID Wallet 
+              To ensure that you have everything you need to start the process of buying a ticket, first scan the QR code below with your Android phone to download the Zicket ID Wallet.
             </p>
             <p className={styles.noteText}>
-              You need to allow installing apps from the unknown source
+              You will also need to allow the installation of apps from unknown sources.
             </p>
             <QRCode
               level="Q"

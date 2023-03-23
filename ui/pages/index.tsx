@@ -24,17 +24,19 @@ export default function Home() {
           />
           <div className={styles.contentInfo}>
             <p className={styles.title}>About Zicket</p>
-            <p className={styles.description}>
+            <p className={styles.infoText}>
               Zicket is a solution to the scalping problem raised by 
               <a href="https://www.youtube.com/watch?v=rp3cDq2LiBM"> Vitalik Buterin at 
               ETH Mexico 2022</a>. 
-              Currently, people can buy multiple conference tickets at once, which is a problem
-              because it encourages ticket misuse and allows bots to resell tickets at inflated prices. 
-              Our solution uses zk proofs to allow buyers to remain anonymous, 
-              while limiting ticket orders to one per person, also preventing bots from buying ticket and making the tickets 
-              non-transferable. Our goal is to prevent ticket scalping and protect buyers{"'"} privacy.
+              Currently, people can buy multiple conference tickets at once, 
+              which encourages ticket misuse and enables bots to resell tickets at inflated prices. 
+              Our solution uses zk proofs to allow buyers to remain anonymous while limiting ticket orders to one per person, 
+              preventing bots from purchasing tickets, and making tickets non-transferable. 
+              Our goal is to prevent ticket scalping and protect buyers{"'"} privacy.
             </p>
-            <YouTube videoId='iFZFeTEsz0c'></YouTube>
+            <div>
+              <YouTube videoId='iFZFeTEsz0c'></YouTube>
+            </div>
           </div>
           <div>
             <Link href="/prerequest">
